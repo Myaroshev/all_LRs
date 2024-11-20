@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -90,7 +92,6 @@ namespace PL_lab3
                     current = 1;
                 }
             }
-
         }
 
         //заполнение конструктора_2
@@ -110,38 +111,125 @@ namespace PL_lab3
             return number;
         }
 
-        //вывод массива
-        public void Print()
+
+        //задание_3
+        //конструктор_4
+        public Class1(Int16 n, Int16 m)
         {
+            Random random = new Random();
+            array = new int[n, m];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    array[i, j] = random.Next(1, 100);
+                }
+            }
+        }
+
+        public Class1(int[,] output_array)
+        {
+            this.array = output_array;
+        }
+
+        public Class1 Transp()
+        {
+            int[,] transposedArray = new int[array.GetLength(1), array.GetLength(0)];//меняем размеры для транспонированной матрицы
+
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    Console.Write(array[i, j] + " ");
+                    transposedArray[j, i] = array[i, j];//заполняем транспонированный массив
                 }
-                Console.WriteLine();
             }
+
+            //Console.WriteLine("Транспонированная матрица:");
+            //for (int i = 0; i < transposedArray.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < transposedArray.GetLength(1); j++)
+            //    {
+            //        Console.Write(transposedArray[i, j] + "\t");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            return new Class1(transposedArray);//новый объект с трансп. матрицей
         }
 
-
-
-
-
-        //задание_4
-        // Метод для генерации и заполнения бинарного файла случайными данными
-        public static void generateFile(string filePath, int size)
+        public static Class1 operator +(Class1 array_1, Class1 array_2) 
         {
-            Random random = new Random();
-
-            using (BinaryWriter writer = new BinaryWriter(new FileStream(filePath, FileMode.Create)))
+            if (array_1.array.GetLength(0) != array_2.array.GetLength(0) || array_1.array.GetLength(1) != array_2.array.GetLength(1))
             {
-                for (int i = 0; i < size; i++)
+                Console.WriteLine("Матрицы должны иметь одинаковую размерность");
+            }
+
+            int rows = array_1.array.GetLength(0);
+            int cols = array_2.array.GetLength(1);
+            Class1 result = new Class1(rows, cols);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
                 {
-                    int randomNumber = random.Next(0, 50);
-                    writer.Write(randomNumber);
+                    result.array[i, j] = array_1.array[i, j] + array_2.array[i, j];
                 }
             }
+
+            return result;
         }
+
+        public static Class1 operator -(Class1 array_1, Class1 array_2)
+        {
+            if (array_1.array.GetLength(0) != array_2.array.GetLength(0) || array_1.array.GetLength(1) != array_2.array.GetLength(1))
+            {
+                Console.WriteLine("Матрицы должны иметь одинаковую размерность");
+            }
+
+            int rows = array_1.array.GetLength(0);
+            int cols = array_2.array.GetLength(1);
+            Class1 result = new Class1(rows, cols);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    result.array[i, j] = array_1.array[i, j] - array_2.array[i, j];
+                }
+            }
+
+            return result;
+        }
+
+
+        public override string ToString()
+        {
+            string result = "";
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    result += array[i, j] + "\t";
+                }
+                result += "\n";
+            }
+
+            return result;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

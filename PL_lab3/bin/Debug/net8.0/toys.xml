@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfToys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Toys>
+    <Name>машинка</Name>
+    <Price>100</Price>
+    <min_age>10</min_age>
+    <max_age>20</max_age>
+  </Toys>
+  <Toys>
+    <Name>ракета</Name>
+    <Price>500</Price>
+    <min_age>1</min_age>
+    <max_age>9</max_age>
+  </Toys>
+</ArrayOfToys>
