@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfToys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Toys>
-    <Name>машинка</Name>
+    <Name>трактор</Name>
     <Price>100</Price>
-    <min_age>10</min_age>
-    <max_age>20</max_age>
+    <min_age>5</min_age>
+    <max_age>10</max_age>
   </Toys>
   <Toys>
-    <Name>ракета</Name>
-    <Price>500</Price>
+    <Name>машинка</Name>
+    <Price>250</Price>
     <min_age>1</min_age>
-    <max_age>9</max_age>
+    <max_age>50</max_age>
+  </Toys>
+  <Toys>
+    <Name>лопатка</Name>
+    <Price>200</Price>
+    <min_age>1</min_age>
+    <max_age>8</max_age>
+  </Toys>
+  <Toys>
+    <Name>кукла</Name>
+    <Price>300</Price>
+    <min_age>1</min_age>
+    <max_age>7</max_age>
+  </Toys>
+  <Toys>
+    <Name>домик</Name>
+    <Price>500</Price>
+    <min_age>4</min_age>
+    <max_age>12</max_age>
   </Toys>
 </ArrayOfToys>

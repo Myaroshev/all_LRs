@@ -57,42 +57,6 @@ namespace PL_lab3
             }
         }
 
-        //конструктор_3
-        public Class1(short n, short n1, short n2)
-        {
-
-            n = 5;
-            if (n <= 0)
-            {
-                Console.WriteLine("Размер матрицы должен быть больше нуля");
-            }
-
-            array = new int[n, n];
-            int k = 1;//счётчик для диагонали
-            int current = n - 1;//для змейки
-
-            //заполнение главной диагонали
-            for (int i = 0; i < n; i++)
-            {
-                array[i, i] = k++;
-            }
-
-            for (int i = 0; i < n-1; i++) 
-            {
-                for (int j = i + 1; j < n; j++)
-                {
-                    if (current >= 1)
-                    {
-                        array[i, j] = current--;
-                    }
-                }
-                current = n - 1 - i - 1;
-                if (current < 1)
-                {
-                    current = 1;
-                }
-            }
-        }
 
         //заполнение конструктора_2
         public int Generator(int n) 
@@ -145,15 +109,15 @@ namespace PL_lab3
                 }
             }
 
-            //Console.WriteLine("Транспонированная матрица:");
-            //for (int i = 0; i < transposedArray.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < transposedArray.GetLength(1); j++)
-            //    {
-            //        Console.Write(transposedArray[i, j] + "\t");
-            //    }
-            //    Console.WriteLine();
-            //}
+            Console.WriteLine("Транспонированная матрица:");
+            for (int i = 0; i < transposedArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < transposedArray.GetLength(1); j++)
+                {
+                    Console.Write(transposedArray[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
 
             return new Class1(transposedArray);//новый объект с трансп. матрицей
         }

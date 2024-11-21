@@ -75,14 +75,6 @@ namespace PL_lab3
                                 Console.WriteLine($"{matrix2.ToString()}");
                                 Console.WriteLine();
 
-                                short new_n = (short)n;
-                                Console.WriteLine("-----#Третий массив#-----");
-                                Class1 matrix3 = new Class1(new_n, new_n, new_n);
-                                Console.WriteLine($"{matrix3.ToString()}");
-                                Console.WriteLine();
-
-
-
                                 break;
                             }
                             catch (ArgumentException ex)
@@ -188,8 +180,8 @@ namespace PL_lab3
 
                             try
                             {
-                                string sourceFile = "file.dat";
-                                string sourceFile_2 = "file2.dat";
+                                string sourceFile = "file.bin";
+                                string sourceFile_2 = "file2.bin";
 
                                 //генерация бинарного файла
                                 Class2.generateFile(sourceFile, n);
@@ -390,7 +382,7 @@ namespace PL_lab3
                                 string sourceFile = "numbers2.txt";
 
                                 Class2.fill_file_line(sourceFile, n, lines);
-                                Console.WriteLine($"Файл '{sourceFile}' заполнен {n} случайными числами");
+                                Console.WriteLine($"Файл '{sourceFile}' заполнен {n} случайными строками по {lines} чисел");
 
                                 Class2.file_print_lines(sourceFile);
 

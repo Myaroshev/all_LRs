@@ -117,14 +117,25 @@ namespace PL_lab3
 
         public static double expensive_toy(string filePath)
         {
-            List<Toys> Toyss = new List<Toys>();
+            List<Toys> Toyss = new List<Toys>();//создание пустого списка Toys
 
-            XmlSerializer serializer = new XmlSerializer(Toyss.GetType());
-            List<Toys> toys;
+            XmlSerializer serializer = new XmlSerializer(Toyss.GetType());//создание экземпляра XmlSerializer для десериализации данных
 
-            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            
+            List<Toys> toys;//переменная для хранения списка игрушек после десериализации
+
+            try
             {
-                toys = (List<Toys>)serializer.Deserialize(fs);
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    //десериализация содержимого xml в список объектов типа List<Toys>. Pезультат сохраняется в переменную toys
+                    toys = (List<Toys>)serializer.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при десериализации: {ex.Message}");
+                return 0;
             }
 
             double max_price = 0;
@@ -212,10 +223,10 @@ namespace PL_lab3
                 {
                     for (int j = 0; j < numbers_in_line; j++)
                     {
-                        int randomNumber = random.Next(1, 15); // Генерация случайного числа от 0 до 99
-                        writer.Write(randomNumber + " "); // Запись числа в строку
+                        int randomNumber = random.Next(1, 15);
+                        writer.Write(randomNumber + " ");
                     }
-                    writer.WriteLine(); // Перейти на новую строку после записи нужного количества чисел
+                    writer.WriteLine();
                 }
             }
         }
@@ -232,7 +243,7 @@ namespace PL_lab3
                 while ((line = reader.ReadLine()) != null)
                 {
 
-                    string[] numbers = line.Split(new[] {' ', '\t'}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] numbers = line.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string str_number in numbers)
                     {
