@@ -306,7 +306,7 @@ namespace PL_lab4
 
                         try
                         {
-                            string source_file = "source_file2.txt";
+                            string source_file = "source_file3.txt";
                             //string source_file = "source_file.txt";
 
                             HashSet<char> unique_letters = Class1<string>.unique_letters(source_file);
@@ -326,11 +326,21 @@ namespace PL_lab4
                             };
 
 
-                            Console.WriteLine("Гласные буквы, которые не входят более чем в одно слово:");
-                            var sorted_letters = unique_letters.Where(letters_dict.ContainsKey).OrderBy(letter => letters_dict[letter]);
-                            //Where - проверяем есть ли буква в словаре
-                            //orderby - сортировка по возрастанию
+                            
+                            var sorted_letters = new List<char>();
+                                                                   
+                            foreach (var letter in unique_letters)
+                            {
+                                if (letters_dict.ContainsKey(letter))
+                                {
+                                    sorted_letters.Add(letter);
+                                }
+                            }
 
+
+                            sorted_letters.Sort();
+
+                            Console.WriteLine("Гласные буквы, которые не входят более чем в одно слово:");
                             foreach (var letter in sorted_letters)
                             {
                                 Console.WriteLine(letter);
