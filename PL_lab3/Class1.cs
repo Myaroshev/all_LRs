@@ -20,7 +20,7 @@ namespace PL_lab3
 
             if (n <= 0 || m <= 0)
             {
-                throw new ArgumentException("Размер матрицы должен быть больше нуля\n");
+                throw new ArgumentException("Размер матрицы должен быть больше нуля и не отрицательным числом\n");
             }
 
             Console.WriteLine("Введите элементы матрицы по столбцам:");
